@@ -1,17 +1,17 @@
 class Solution:
     def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
         if head==None or head.next==None: 
-            return head #If the list is empty or there is only one element then return it as it is
+            return head 
         prev=head
         curr=prev.next
-        prev.next=None #After reversal first element will point to None
+        prev.next=None
         temp=curr.next
         while curr.next:
             curr.next=prev
             prev=curr
             curr=temp
             temp=curr.next
-        curr.next=prev #To connect last element to second last element
+        curr.next=prev
         return curr
     
     def isPalindrome(self, head: Optional[ListNode]) -> bool:
