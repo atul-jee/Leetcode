@@ -19,6 +19,7 @@ class Solution:
                 indegree[neigh]-=1
                 if indegree[neigh]==0:
                     q.append(neigh)
-        return course if n==i else []
+        if i!=n:return []
+        return course
         
         
