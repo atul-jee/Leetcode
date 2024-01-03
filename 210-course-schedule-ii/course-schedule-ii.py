@@ -8,17 +8,18 @@ class Solution:
         q=deque()
         for i in range(n):
             if indegree[i]==0:q.append(i)
-        course=[]
+        course=[0]*n
         i=0
         while q:
             u=q.popleft()
-            course.append(u)
+            course[i]=u
+            i+=1
 
             for neigh in g[u]:
                 indegree[neigh]-=1
                 if indegree[neigh]==0:
                     q.append(neigh)
-        if len(course)<n:return []
+        if i!=n:return []
         return course
         
         
