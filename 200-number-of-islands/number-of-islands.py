@@ -1,26 +1,20 @@
 class Solution:
-    def helper(self,grid,i,j):
-        r=len(grid)
-        c=len(grid[0])
-        if i>=r or j>=c or i<0 or j<0 or grid[i][j]=='0':
-            return 
-        grid[i][j]='0'
-        self.helper(grid,i-1,j)
-        self.helper(grid,i+1,j)
-        self.helper(grid,i,j-1)
-        self.helper(grid,i,j+1)
-        
     def numIslands(self, grid: List[List[str]]) -> int:
-        if not grid:return 0
-
+        visited=set()
         count=0
+        def bfs(i,j):
+            q=deque([(i,j)])
+            while q:
+                x,y=q.popleft()
+                if 0<=x<len(grid) and 0<=y<len(grid[0]) and grid[x][y]=='1':
+                    grid[x][y]='0'
+                    q.extend([(x-1,y),(x+1,y),(x,y-1),(x,y+1)])
         for i in range(len(grid)):
             for j in range(len(grid[0])):
-                if grid[i][j]!='0':
+                if grid[i][j]=='1':
                     count+=1
-                    self.helper(grid,i,j)
+                    bfs(i,j)
         return count
-
-    
+        
         
         
