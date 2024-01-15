@@ -3,7 +3,8 @@ class Solution:
         visited=set()
         count=0
         def bfs(i,j):
-            q=deque([(i,j)])
+            q=deque()
+            q.append((i,j))
             while q:
                 x,y=q.popleft()
                 if 0<=x<len(grid) and 0<=y<len(grid[0]) and grid[x][y]=='1':
