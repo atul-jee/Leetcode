@@ -7,14 +7,16 @@
 class Solution:
     def deepestLeavesSum(self, root: Optional[TreeNode]) -> int:
         d=defaultdict(list)
-        q=[(root,0)]
+        q=deque()
+        q.append(root)
+        
         while q:
-            node,level=q.pop(0)
-            if node!=None:
-                d[level].append(node.val)
-                q.append((node.left,level+1))
-                q.append((node.right,level+1))
-        s=0
-        for ele in d.keys():
-            s=max(s,ele)
-        return sum(d[s])
+            res=0
+            for i in range(len(q)):
+                node=q.popleft()
+                res+=node.val
+                if node.left:
+                   q.append(node.left)
+                if node.right:
+                    q.append(node.right)
+        return res
