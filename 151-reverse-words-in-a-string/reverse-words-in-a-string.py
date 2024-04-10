@@ -2,7 +2,8 @@ class Solution:
     def reverseWords(self, s: str) -> str:
         st=''
         w=''
-        for i in range(len(s)):
+        n=len(s)
+        for i in range(n):
             if s[i]==' ':
                 if i>0 and s[i-1]!=s[i]:
                     st=(w+' ')+st
