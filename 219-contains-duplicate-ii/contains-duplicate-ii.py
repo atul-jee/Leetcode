@@ -3,11 +3,10 @@ class Solution:
         d=dict()
         for i in range(len(nums)):
             ele=nums[i]
-            if ele in d:
-                if abs(d[ele]-i)<=k:
+            if ele not in d:
+                d[ele]=i
+            elif abs(d[ele]-i)<=k:
                     return True
-                else:
-                    d[ele]=i
             else:
                 d[ele]=i
         return False
