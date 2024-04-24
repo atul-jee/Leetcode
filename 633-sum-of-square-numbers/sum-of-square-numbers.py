@@ -1,7 +1,6 @@
 class Solution:
     def judgeSquareSum(self, c: int) -> bool:
-        maxSqr = int(sqrt(c))
-        l, r = 0, maxSqr
+        l, r = 0, int(sqrt(c))
         while (l <= r):
             ans = l**2 + r**2
             if (ans > c):
