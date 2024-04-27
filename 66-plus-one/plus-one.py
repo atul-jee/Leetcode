@@ -1,8 +1,7 @@
 class Solution:
     def plusOne(self, digits: List[int]) -> List[int]:
-        n=len(digits)*-1
-        i=-1
-        while i>=n:
+        n=len(digits)
+        for i in range(n-1,-1,-1):
             s=digits[i]+1
             rem=s//10
             if rem==0:
