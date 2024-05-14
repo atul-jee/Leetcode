@@ -7,7 +7,6 @@ class Solution:
                 d[st.pop()]=ele
             st.append(ele)
         for i in range(len(nums1)):
-            
             nums1[i] = d.get(nums1[i], -1)
         print(d)
         return nums1
