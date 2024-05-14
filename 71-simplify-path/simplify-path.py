@@ -1,11 +1,10 @@
 class Solution:
     def simplifyPath(self, path):
-        dirOrFiles = []
-        path = path.split("/")
-        for elem in path:
-            if dirOrFiles and elem == "..":
-                dirOrFiles.pop()
-            elif elem not in [".", "", ".."]:
-                dirOrFiles.append(elem)
-                
-        return "/" + "/".join(dirOrFiles)
+        ans=[]
+        path=path.split('/')
+        for ele in path:
+            if ans and ele=="..":
+                ans.pop()
+            elif ele not in ["",".",".."]:
+                ans.append(ele)
+        return "/"+"/".join(ans)
