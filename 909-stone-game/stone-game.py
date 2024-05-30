@@ -1,7 +1,20 @@
 class Solution:
-    def stoneGame(self, piles: list[int]) -> bool:
-        @cache
-        def score(i: int, j: int) -> int:
-            return (i < j) and max(piles[i] + score(i + 1, j), piles[j] + score(i, j - 1))
+    def stoneGame(self, piles: List[int]) -> bool:
+        alice,bob =0,0
+        i,j = 0, len(piles) - 1
+        turn = 1
+        while  i<j:
+            if turn :
+                alice += max(piles[i],piles[j])
+                if piles[i] >= piles[j] :
+                    i += 1
+                else:
+                    j -= 1
+            else:
+                bob += max(piles[i],piles[j])
+                if piles[i] >= piles[j] :
+                    i += 1
+                else:
+                    j -= 1
         
-        return score(0, len(piles) - 1)
+        return alice>bob
