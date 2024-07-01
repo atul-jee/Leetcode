@@ -5,20 +5,17 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def dfs(self,root):
-        if root is None:
-            return 0
-        l=self.dfs(root.left)
-        if l==-1:
-            return -1
-        r=self.dfs(root.right)
-        if r==-1:
-            return -1
-        if abs(l-r)>1:
-            return -1
-        return max(l,r)+1
-
     def isBalanced(self, root: Optional[TreeNode]) -> bool:
-        return self.dfs(root)!=-1
-    
+        def helper(root):
+            if root is None:
+                return 0
+            else:
+                l=helper(root.left)
+                r=helper(root.right)
+                if abs(l-r)>1 or l==-1 or r==-1:
+                    return -1
+                return max(l,r)+1
+        return helper(root)!=-1
+                
+
         
