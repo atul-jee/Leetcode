@@ -7,7 +7,10 @@ class Solution:
             if ele==1:
                 curr+=1
             else:
-                prev=max(prev,curr)
+                if prev<curr:
+                    prev=curr
                 curr=0
-        return max(curr,prev)
+        if prev<curr:
+            prev=curr
+        return prev
         
