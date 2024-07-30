@@ -4,9 +4,8 @@ class Solution:
         curr=0
         
         for ele in nums:
-            if ele==1:
-                curr+=1
-            else:
+            curr+=ele
+            if ele==0:
                 if prev<curr:
                     prev=curr
                 curr=0
